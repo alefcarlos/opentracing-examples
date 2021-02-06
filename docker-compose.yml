@@ -23,6 +23,7 @@ services:
       - JAEGER_SAMPLER_PARAM=0
       - JAEGER_SERVICE_NAME=app1-without-jaeger
       - JAEGER_AGENT_HOST=jaeger
+      - Application2Url=http://app2
     ports:
       - "8081:80"
 
@@ -31,6 +32,7 @@ services:
     image: app1
     environment: 
       - JAEGER_AGENT_HOST=jaeger
+      - Application2Url=http://app2
     ports:
       - "8082:80"
 

@@ -1,5 +1,6 @@
 ﻿using OpenTracing;
 using System;
+using System.Threading.Tasks;
 
 namespace Application1.Rules
 {
@@ -12,12 +13,12 @@ namespace Application1.Rules
             this.rdn = rdn;
         }
 
-        protected override bool Execute()
+        protected override Task<bool> ExecuteAsync()
         {
             var value = rdn.Next(2);
             tracer.ActiveSpan.SetTag("random", value);
 
-            return value == 1;
+            return Task.FromResult(value == 1);
         }
     }
 }

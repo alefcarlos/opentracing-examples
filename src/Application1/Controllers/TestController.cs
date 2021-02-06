@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using OpenTracing;
+using System.Threading.Tasks;
 
 namespace Application1.Controllers
 {
@@ -25,21 +26,19 @@ namespace Application1.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post()
+        public async Task<IActionResult> PostAsync()
         {
-            using var scope = tracer.BuildSpan(GetType().Name).StartActive();
-
-            var result = rule1.Validate();
+            var result = await rule1.ValidateAsync();
 
             if (!result)
                 return BadRequest();
 
-            result = rule2.Validate();
+            result = await rule2.ValidateAsync();
 
             if (!result)
                 return BadRequest();
 
-            result = rule3.Validate();
+            result = await rule3.ValidateAsync();
 
             if (!result)
                 return BadRequest();

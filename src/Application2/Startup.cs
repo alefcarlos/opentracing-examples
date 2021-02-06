@@ -22,6 +22,8 @@ namespace Application2
         {
             services.AddControllers();
 
+            services.AddHttpTracingPropagation();
+
             services.AddSingleton(serviceProvider =>
             {
                 var loggerFactory = serviceProvider.GetRequiredService<ILoggerFactory>();

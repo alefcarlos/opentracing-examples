@@ -6,8 +6,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using OpenTracing;
-using OpenTracing.Mock;
+using Refit;
 using System;
 
 namespace Application1
@@ -26,6 +25,8 @@ namespace Application1
         {
             services.AddControllers();
 
+            services.AddHttpTracingPropagation();
+
             services.AddSingleton(serviceProvider =>
             {
                 var loggerFactory = serviceProvider.GetRequiredService<ILoggerFactory>();
@@ -43,6 +44,9 @@ namespace Application1
             services.AddSingleton<Rule1>();
             services.AddSingleton<Rule2>();
             services.AddSingleton<Rule3>();
+
+            services.AddRefitClient<IApplication2ApiClient>()
+                    .ConfigureHttpClient(c => c.BaseAddress = new Uri(Configuration.GetValue<string>("Application2Url")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

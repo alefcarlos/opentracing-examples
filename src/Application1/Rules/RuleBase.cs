@@ -1,5 +1,6 @@
 ﻿using OpenTracing;
 using OpenTracing.Tag;
+using System.Threading.Tasks;
 
 namespace Application1.Rules
 {
@@ -12,11 +13,11 @@ namespace Application1.Rules
             this.tracer = tracer;
         }
 
-        public bool Validate()
+        public async Task<bool> ValidateAsync()
         {
             using var scope = tracer.BuildSpan($"Validation {GetType().Name}").StartActive();
 
-            var result = Execute();
+            var result = await ExecuteAsync();
 
             if (!result)
                 Tags.Error.Set(scope.Span, true);
@@ -24,6 +25,6 @@ namespace Application1.Rules
             return result;
         }
 
-        protected abstract bool Execute();
+        protected abstract Task<bool> ExecuteAsync();
     }
 }
