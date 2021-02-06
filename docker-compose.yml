@@ -19,11 +19,25 @@ services:
   app1-without-jaeger:
     build: ./src/Application1
     image: app1
+    environment: 
+      - JAEGER_SAMPLER_PARAM=0
+      - JAEGER_SERVICE_NAME=app1-without-jaeger
+      - JAEGER_AGENT_HOST=jaeger
+    ports:
+      - "8081:80"
 
   app1-with-jaeger:
     build: ./src/Application1
     image: app1
+    environment: 
+      - JAEGER_AGENT_HOST=jaeger
+    ports:
+      - "8082:80"
 
   app2:
     build: ./src/Application2
     image: app2
+    environment: 
+      - JAEGER_AGENT_HOST=jaeger
+    ports:
+      - "8083:80"

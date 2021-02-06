@@ -39,10 +39,6 @@ namespace Application1
                 return config.GetTracer();
             });
 
-            var jaegerEnabled = Configuration.GetValue<bool>("JaegerEnabled");
-            if (!jaegerEnabled)
-                services.Decorate<ITracer>((inner, provider) => new MockTracer());
-
             services.AddSingleton<Random>();
             services.AddSingleton<Rule1>();
             services.AddSingleton<Rule2>();
