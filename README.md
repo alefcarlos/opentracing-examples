@@ -1,5 +1,11 @@
 # opentracing-examples
 
+## How to run
+
+[KISS](https://pt.wikipedia.org/wiki/Princ%C3%ADpio_KISS)
+
+`docker-compose up --build`
+
 ## References
 
 * https://github.com/opentracing-contrib/csharp-netcore
