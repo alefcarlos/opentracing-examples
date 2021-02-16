@@ -8,10 +8,10 @@
 
 ## Aplicações de exemplo
 
-`app1-without-trace`, rodando em http://localhost:8081
-`app1-with-trace`, rodando em http://localhost:8082
-`app2`, rodando em http://localhost:8083
-`jaeger-ui`, rodando em http://localhost:16686
+- `app1-without-trace`, rodando em http://localhost:8081
+- `app1-with-trace`, rodando em http://localhost:8082
+- `app2`, rodando em http://localhost:8083
+- `jaeger-ui`, rodando em http://localhost:16686
 
 ### app-1
 
