@@ -19,6 +19,8 @@ Uma aplicação que executa 3 regras, a primeira faz uma chamada `http` para o s
 
 Teremos uma instância que os traces estão desabilitados para simular o caso de pior exemplo.
 
+Para executar o teste só é preciso realizar uma chamada nesta rota: `POST http://localhost:8082/test`
+
 ### app-2
 
 Uma aplicação simples contendo uma rota que retorna http status code 200-OK
