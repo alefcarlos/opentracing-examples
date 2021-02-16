@@ -15,7 +15,7 @@
 
 ### app-1
 
-Uma aplicação que executa 3 regras, a primeira faz uma chamada `http` para o serivço `app-2` e as outras duas tem 50% de chance de falhar.
+Uma aplicação que executa 3 regras, a primeira faz uma chamada `http` para o serivço `app-2` e sempre retorna sucesso e as outras duas tem 50% de chance de falhar.
 
 Teremos uma instância que os traces estão desabilitados para simular o caso de pior exemplo.
 
